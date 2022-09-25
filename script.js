@@ -45,8 +45,9 @@ document.querySelector(".check").addEventListener("click", function () {
         document.querySelector(".number").style.width = "25rem";
 
         // если ответ меньше загаданного числа
-    } else if (guess < secretNumber) {
-        document.querySelector(".message").textContent = "HIT HIGHER";
+    } else if (guess !== secretNumber) {
+        document.querySelector(".message").textContent =
+            guess < secretNumber ? "HIT HIGHER" : "HIT LOWER";
         score--;
         if (score > 0) {
             document.querySelector(".score").textContent = score;
@@ -69,33 +70,6 @@ document.querySelector(".check").addEventListener("click", function () {
                 "YOU LOSE! TRY AGAIN!";
             document.querySelector(".number").style.width = "60rem";
             document.querySelector(".number").style.color = "#781818";
-        }
-        // если ответ больше загаданного числа
-    } else if (guess > secretNumber) {
-        document.querySelector(".message").textContent = "HIT LOWER";
-        score--;
-        if (score > 0) {
-            document.querySelector(".score").textContent = score;
-        } else {
-            document.querySelector(".score").textContent = 0;
-            document.querySelector(".check").disabled = true;
-
-            document.querySelector("body").style.background =
-                "linear-gradient(to top left, #F0FFF0, #781818)";
-            document.querySelector("body").style.color = "#333";
-            document.querySelector(".check").style.color = "#333";
-            document.querySelector(".check").style.backgroundColor = "#f0f0d8";
-            document.querySelector(".btn").style.color = "#333";
-            document.querySelector(".btn").style.backgroundColor = "#f0f0d8";
-            document.querySelector(".guess").style.color = "#333";
-            document.querySelector(".score").style.color = "#333";
-            document.querySelector(".message").style.color = "#333";
-            document.querySelector(".label-score").style.color = "#781818";
-            document.querySelector(".number").textContent =
-                "YOU LOSE! TRY AGAIN!";
-            document.querySelector(".number").style.width = "60rem";
-            document.querySelector(".number").style.color = "#781818";
-            document.querySelector(".label-highscore").style.color = "#333";
         }
     }
 });
