@@ -23,8 +23,10 @@ document.querySelector(".check").addEventListener("click", function () {
     if (guess === secretNumber) {
         document.querySelector(".message").textContent =
             "Up from the 36 Chambers! YOU WON!";
+        if (highscore < score) {
+            highscore = score;
+        }
 
-        highscore = score;
         document.querySelector(".highscore").textContent = highscore;
 
         document.querySelector(".number").textContent =
